@@ -19,4 +19,8 @@ Global
 		{3A959E59-8B97-45CD-9BB5-82EBA279A406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A959E59-8B97-45CD-9BB5-82EBA279A406}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(RiderSharedRunConfigurations) = postSolution
+		File = .SMSL.UI\Properties\PubishProfiles\SMSL.UI Publish win-x64.run.xml
+		File = SMSL.UI\Properties\PubishProfiles\win-x64.run.xml
+	EndGlobalSection
 EndGlobal
