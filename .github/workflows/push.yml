@@ -1,11 +1,10 @@
-﻿name: Build CI
+﻿name: Push CI
 
 on:
   push:
     branches: 
       - main
       - dev
-  pull_request:
 
 jobs:
   build-win:
@@ -31,7 +30,7 @@ jobs:
         run: dotnet build
           
       - name: publish win-x64
-        run: dotnet publish SMSL.UI -p:PublishProfile=win-x64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=win-x64.pubxml --no-restore
         
       - name: upload artifact win-x64
         uses: actions/upload-artifact@v4
@@ -40,7 +39,7 @@ jobs:
           path: build/win-x64
         
       - name: publish win-x86
-        run: dotnet publish SMSL.UI -p:PublishProfile=win-x86.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=win-x86.pubxml --no-restore
         
       - name: upload artifact win-x86
         uses: actions/upload-artifact@v4
@@ -49,7 +48,7 @@ jobs:
           path: build/win-x86
         
       - name: publish win-arm64
-        run: dotnet publish SMSL.UI -p:PublishProfile=win-arm64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=win-arm64.pubxml --no-restore
         
       - name: upload artifact win-arm64
         uses: actions/upload-artifact@v4
@@ -80,7 +79,7 @@ jobs:
         run: dotnet build
 
       - name: publish osx-x64
-        run: dotnet publish SMSL.UI -p:PublishProfile=osx-x64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=osx-x64.pubxml --no-restore
 
       - name: upload artifact osx-x64
         uses: actions/upload-artifact@v4
@@ -89,7 +88,7 @@ jobs:
           path: build/osx-x64
 
       - name: publish osx-arm64
-        run: dotnet publish SMSL.UI -p:PublishProfile=osx-arm64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=osx-arm64.pubxml --no-restore
 
       - name: upload artifact osx-arm64
         uses: actions/upload-artifact@v4
@@ -120,7 +119,7 @@ jobs:
         run: dotnet build
 
       - name: publish linux-x64
-        run: dotnet publish SMSL.UI -p:PublishProfile=linux-x64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=linux-x64.pubxml --no-restore
 
       - name: upload artifact linux-x64
         uses: actions/upload-artifact@v4
@@ -129,7 +128,7 @@ jobs:
           path: build/linux-x64
 
       - name: publish linux-arm64
-        run: dotnet publish SMSL.UI -p:PublishProfile=linux-arm64.pubxml
+        run: dotnet publish SMSL.UI -p:PublishProfile=linux-arm64.pubxml --no-restore
 
       - name: upload artifact linux-arm64
         uses: actions/upload-artifact@v4
@@ -138,7 +137,7 @@ jobs:
           path: build/linux-arm64
           
   publish:
-    if: github.repository_owner == 'erha134' && contains(github.event.head_commit.message, '[release]') == true && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.repository_owner == 'erha134' && github.ref == 'refs/heads/main'
     needs: [build-win, build-osx, build-linux]
     runs-on: ubuntu-latest
     
