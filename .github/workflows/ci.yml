@@ -2,8 +2,10 @@
 
 on:
   push:
-    tags-ignore:
-      - "**"
+    branches: 
+      - main
+      - dev
+  pull_request:
 
 jobs:
   build-win:
@@ -136,7 +138,7 @@ jobs:
           path: build/linux-arm64
           
   publish:
-    if: github.repository_owner == 'erha134' && contains(github.event.head_commit.message, '[release]') == true && github.event_name == 'push'
+    if: github.repository_owner == 'erha134' && contains(github.event.head_commit.message, '[release]') == true && github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: [build-win, build-osx, build-linux]
     runs-on: ubuntu-latest
     
