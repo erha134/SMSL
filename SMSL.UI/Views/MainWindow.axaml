@@ -3,18 +3,117 @@
         xmlns:vm="using:SMSL.UI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+
         x:Class="SMSL.UI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="SMSL.UI">
+        
+        mc:Ignorable="d" 
+        d:DesignWidth="960" 
+        d:DesignHeight="540"
+        Width="960"
+        Height="540"
+        MinWidth="960"
+        MinHeight="540"
+        
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/icon.ico"
+        Title="Simple Minecraft Server Launcher"
+        Background="Transparent"
+        TransparencyLevelHint="Mica, AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    
+    <Grid Name="WindowGrid"
+          RowDefinitions="32, *"
+          Margin="0, 4, 0, 0">
+        <Grid Name="TitleGrid"
+              Grid.Row="0"
+              ColumnDefinitions="*, Auto, Auto, Auto"
+              Margin="16, 4, 0, 4"
+              Background="Transparent">
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Image Height="24"
+                       Width="24"
+                       Source="avares://SMSL.UI/Assets/icon.png" 
+                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                <TextBlock Text="Simple Minecraft Server Launcher"
+                           Margin="10, 0, 0, 0"
+                           FontSize="16"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <Button Name="MinimizeButton"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="MinimizeButton_Click">
+                <TextBlock Name="MinimizeIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE921;"/>
+            </Button>
+            <Button Name="MaximizeButton"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="MaximizeButton_Click">
+                <TextBlock Name="MaximizeIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE922;"/>
+            </Button>
+            <Button Name="CloseButton"
+                    Grid.Column="3"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="CloseButton_Click">
+                <TextBlock Name="CloseIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE711;"/>
+            </Button>
+        </Grid>
+        
+        <Grid Name="MainGrid" 
+              Grid.Row="1"
+              ColumnDefinitions="Auto, *">
+            <ListBox Name="SideBar" 
+                     Grid.Column="0"
+                     Background="Transparent"
+                     SelectionMode="Single, AlwaysSelected"
+                     SelectionChanged="SideBar_OnSelectionChanged"
+                     ItemsSource="{Binding SideBarPages}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="4, 4, 0, 4">
+                            <Svg Path="{Binding Icon}"
+                                 Height="32"
+                                 Width="32"
+                                 RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                            <TextBlock Text="{Binding Title}"
+                                       Margin="4"
+                                       FontSize="16"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        
+            <Panel Name="ContentPanel" 
+                   Grid.Column="1">
+            </Panel>
+        </Grid>
+    </Grid>
 </Window>
