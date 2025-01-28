@@ -9,7 +9,7 @@ public class MainWindowViewModel : ViewModelBase
     public List<SideBarPageItem> SideBarPages { get; } =
     [
         new("/Assets/home.svg", "Home", new HomePage()),
-        new("/Assets/download.svg", "Download", new DownloadPage()),
+        new("/Assets/servers.svg", "Servers", new ServersPage()),
         new("/Assets/settings.svg", "Settings", new SettingsPage()),
         new("/Assets/about.svg", "About", new AboutPage()),
     ];

@@ -5,5 +5,7 @@ public partial class HomePage : PageBase
     public HomePage()
     {
         InitializeComponent();
+
+        AnnouncementsTitle.Text = "Announcements";
     }
 }

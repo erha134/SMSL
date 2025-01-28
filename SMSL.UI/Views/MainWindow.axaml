@@ -8,20 +8,22 @@
         x:DataType="vm:MainWindowViewModel"
         
         mc:Ignorable="d" 
-        d:DesignWidth="960" 
-        d:DesignHeight="540"
-        Width="960"
-        Height="540"
-        MinWidth="960"
-        MinHeight="540"
+        d:DesignWidth="1440" 
+        d:DesignHeight="900"
+        Width="1440"
+        Height="900"
+        MinWidth="1440"
+        MinHeight="900"
         
         WindowStartupLocation="CenterScreen"
         Icon="/Assets/icon.ico"
         Title="Simple Minecraft Server Launcher"
         Background="Transparent"
         TransparencyLevelHint="Mica, AcrylicBlur"
+        
         ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaChromeHints="NoChrome">
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -36,7 +38,10 @@
               Grid.Row="0"
               ColumnDefinitions="*, Auto, Auto, Auto"
               Margin="16, 4, 0, 4"
-              Background="Transparent">
+              Background="Transparent"
+              PointerPressed="TitleGrid_StartListenForDrag"
+              PointerMoved="TitleGrid_HandlePotentialDrag"
+              PointerReleased="TitleGrid_HandlePotentialDrop">
             <StackPanel Grid.Column="0"
                         Orientation="Horizontal"
                         VerticalAlignment="Center">
@@ -76,7 +81,9 @@
                     Grid.Column="3"
                     Background="Transparent"
                     BorderBrush="Transparent"
-                    Click="CloseButton_Click">
+                    Click="CloseButton_Click"
+                    PointerEntered="CloseButton_OnPointerEntered"
+                    PointerExited="CloseButton_OnPointerExited">
                 <TextBlock Name="CloseIcon"
                            VerticalAlignment="Center"
                            FontSize="12"
@@ -110,10 +117,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        
             <Panel Name="ContentPanel" 
-                   Grid.Column="1">
-            </Panel>
+                   Grid.Column="1"
+                   Background="White"/>
         </Grid>
     </Grid>
 </Window>

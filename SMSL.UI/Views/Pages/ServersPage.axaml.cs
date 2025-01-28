@@ -1,8 +1,8 @@
 ﻿namespace SMSL.UI.Views.Pages;
 
-public partial class DownloadPage : PageBase
+public partial class ServersPage : PageBase
 {
-    public DownloadPage()
+    public ServersPage()
     {
         InitializeComponent();
     }
