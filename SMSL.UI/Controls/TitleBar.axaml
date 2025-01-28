@@ -1,0 +1,62 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SMSL.UI.Controls.TitleBar"
+             PointerPressed="TitleGrid_StartListenForDrag"
+             PointerMoved="TitleGrid_HandlePotentialDrag"
+             PointerReleased="TitleGrid_HandlePotentialDrop">
+    <Grid Name="TitleGrid"
+              ColumnDefinitions="*, Auto, Auto, Auto"
+              Margin="16, 4, 0, 4">
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Image Height="24"
+                       Width="24"
+                       Source="avares://SMSL.UI/Assets/icon.png" 
+                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                <TextBlock Text="Simple Minecraft Server Launcher"
+                           Margin="10, 0, 0, 0"
+                           FontSize="16"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <Button Name="MinimizeButton"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="MinimizeButton_Click">
+                <TextBlock Name="MinimizeIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE921;"/>
+            </Button>
+            <Button Name="MaximizeButton"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="MaximizeButton_Click">
+                <TextBlock Name="MaximizeIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE922;"/>
+            </Button>
+            <Button Name="CloseButton"
+                    Grid.Column="3"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="CloseButton_Click"
+                    PointerEntered="CloseButton_OnPointerEntered"
+                    PointerExited="CloseButton_OnPointerExited">
+                <TextBlock Name="CloseIcon"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                           Text="&#xE711;"/>
+            </Button>
+        </Grid>
+</UserControl>

@@ -3,6 +3,7 @@
         xmlns:vm="using:SMSL.UI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:smsl="clr-namespace:SMSL.UI.Controls"
 
         x:Class="SMSL.UI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -34,70 +35,14 @@
     <Grid Name="WindowGrid"
           RowDefinitions="32, *"
           Margin="0, 4, 0, 0">
-        <Grid Name="TitleGrid"
-              Grid.Row="0"
-              ColumnDefinitions="*, Auto, Auto, Auto"
-              Margin="16, 4, 0, 4"
-              Background="Transparent"
-              PointerPressed="TitleGrid_StartListenForDrag"
-              PointerMoved="TitleGrid_HandlePotentialDrag"
-              PointerReleased="TitleGrid_HandlePotentialDrop">
-            <StackPanel Grid.Column="0"
-                        Orientation="Horizontal"
-                        VerticalAlignment="Center">
-                <Image Height="24"
-                       Width="24"
-                       Source="avares://SMSL.UI/Assets/icon.png" 
-                       RenderOptions.BitmapInterpolationMode="HighQuality"/>
-                <TextBlock Text="Simple Minecraft Server Launcher"
-                           Margin="10, 0, 0, 0"
-                           FontSize="16"
-                           VerticalAlignment="Center"/>
-            </StackPanel>
-            
-            <Button Name="MinimizeButton"
-                    Grid.Column="1"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="MinimizeButton_Click">
-                <TextBlock Name="MinimizeIcon"
-                           VerticalAlignment="Center"
-                           FontSize="12"
-                           FontFamily="{StaticResource SymbolThemeFontFamily}"
-                           Text="&#xE921;"/>
-            </Button>
-            <Button Name="MaximizeButton"
-                    Grid.Column="2"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="MaximizeButton_Click">
-                <TextBlock Name="MaximizeIcon"
-                           VerticalAlignment="Center"
-                           FontSize="12"
-                           FontFamily="{StaticResource SymbolThemeFontFamily}"
-                           Text="&#xE922;"/>
-            </Button>
-            <Button Name="CloseButton"
-                    Grid.Column="3"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="CloseButton_Click"
-                    PointerEntered="CloseButton_OnPointerEntered"
-                    PointerExited="CloseButton_OnPointerExited">
-                <TextBlock Name="CloseIcon"
-                           VerticalAlignment="Center"
-                           FontSize="12"
-                           FontFamily="{StaticResource SymbolThemeFontFamily}"
-                           Text="&#xE711;"/>
-            </Button>
-        </Grid>
+        
+        <smsl:TitleBar Grid.Row="0" />
         
         <Grid Name="MainGrid" 
               Grid.Row="1"
               ColumnDefinitions="Auto, *">
             <ListBox Name="SideBar" 
                      Grid.Column="0"
-                     Background="Transparent"
                      SelectionMode="Single, AlwaysSelected"
                      SelectionChanged="SideBar_OnSelectionChanged"
                      ItemsSource="{Binding SideBarPages}">
