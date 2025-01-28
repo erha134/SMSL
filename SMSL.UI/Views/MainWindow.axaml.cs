@@ -14,8 +14,6 @@ public partial class MainWindow : Window
         MainGrid.ShowGridLines = true;
         #endif
     }
-    
-    // Custom Title Bar
 
     private void SideBar_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {

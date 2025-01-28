@@ -13,11 +13,12 @@
             <StackPanel Grid.Column="0"
                         Orientation="Horizontal"
                         VerticalAlignment="Center">
-                <Image Height="24"
+                <Image Name="TitleBarIcon"
+                       Height="24"
                        Width="24"
                        Source="avares://SMSL.UI/Assets/icon.png" 
                        RenderOptions.BitmapInterpolationMode="HighQuality"/>
-                <TextBlock Text="Simple Minecraft Server Launcher"
+                <TextBlock Name="TitleBarTitle"
                            Margin="10, 0, 0, 0"
                            FontSize="16"
                            VerticalAlignment="Center"/>

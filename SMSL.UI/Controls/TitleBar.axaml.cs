@@ -17,6 +17,36 @@ public partial class TitleBar : UserControl
         #endif
     }
     
+    // Custom
+
+    public static readonly StyledProperty<IImage> IconProperty =
+        AvaloniaProperty.Register<TitleBar, IImage>(nameof(Icon));
+
+    public IImage Icon
+    {
+        get => GetValue(IconProperty);
+        set
+        {
+            SetValue(IconProperty, value);
+            TitleBarIcon.Source = value;
+        }
+    }
+
+    public static readonly StyledProperty<string> TitleProperty =
+        AvaloniaProperty.Register<TitleBar, string>(nameof(Title));
+
+    public string Title
+    {
+        get => GetValue(TitleProperty);
+        set
+        {
+            SetValue(TitleProperty, value);
+            TitleBarTitle.Text = value;
+        }
+    }
+    
+    // Buttons
+    
     private void MinimizeButton_Click(object? sender, RoutedEventArgs e)
     {
         var root = (Window) VisualRoot!;

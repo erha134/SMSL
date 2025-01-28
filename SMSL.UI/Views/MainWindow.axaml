@@ -36,7 +36,9 @@
           RowDefinitions="32, *"
           Margin="0, 4, 0, 0">
         
-        <smsl:TitleBar Grid.Row="0" />
+        <smsl:TitleBar Grid.Row="0"
+                       Icon="avares://SMSL.UI/Assets/icon.png"
+                       Title="Simple Minecraft Server Launcher"/>
         
         <Grid Name="MainGrid" 
               Grid.Row="1"
@@ -62,6 +64,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            
             <Panel Name="ContentPanel" 
                    Grid.Column="1"
                    Background="White"/>
