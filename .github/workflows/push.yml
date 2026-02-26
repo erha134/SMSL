@@ -33,7 +33,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=win-x64.pubxml
         
       - name: upload artifact win-x64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: win-x64
           path: build/win-x64
@@ -42,7 +42,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=win-x86.pubxml
         
       - name: upload artifact win-x86
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: win-x86
           path: build/win-x86
@@ -51,7 +51,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=win-arm64.pubxml
         
       - name: upload artifact win-arm64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: win-arm64
           path: build/win-arm64
@@ -82,7 +82,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=osx-x64.pubxml
 
       - name: upload artifact osx-x64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: osx-x64
           path: build/osx-x64
@@ -91,7 +91,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=osx-arm64.pubxml
 
       - name: upload artifact osx-arm64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: osx-arm64
           path: build/osx-arm64
@@ -122,7 +122,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=linux-x64.pubxml
 
       - name: upload artifact linux-x64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: linux-x64
           path: build/linux-x64
@@ -131,7 +131,7 @@ jobs:
         run: dotnet publish SMSL.UI -p:PublishProfile=linux-arm64.pubxml
 
       - name: upload artifact linux-arm64
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: linux-arm64
           path: build/linux-arm64
@@ -143,7 +143,7 @@ jobs:
     
     steps:
       - name: download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         
       - name: read gradle.properties
         id: prop_info
